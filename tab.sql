@@ -1,16 +1,7 @@
-/*First start PL/SQL block, then create tables*/
-
-BEGIN
-	EXECUTE IMMEDIATE 'DROP TABLE question_content CASCADE CONSTRAINTS';
-    EXECUTE IMMEDIATE 'DROP TABLE question_attributes CASCADE CONSTRAINTS';
-	EXECUTE IMMEDIATE 'DROP TABLE active_question CASCADE CONSTRAINTS';
-	EXECUTE IMMEDIATE 'DROP TABLE archives CASCADE CONSTRAINTS';
-EXCEPTION
-	WHEN OTHERS THEN
-		IF SQLCODE != -942 THEN
-			RAISE;
-		END IF;
-END;
+DROP TABLE question_content CASCADE CONSTRAINTS;
+DROP TABLE question_attributes CASCADE CONSTRAINTS;
+DROP TABLE active_question CASCADE CONSTRAINTS;
+DROP TABLE archives CASCADE CONSTRAINTS;
 
 -------------------------------------------------------------------------------------------------
 
@@ -24,8 +15,8 @@ CREATE TABLE question_content (
 CREATE TABLE question_attributes (
 	id NUMBER(10) NOT NULL,
     question_content_id NUMBER(10) NOT NULL,
-	question_about VARCHAR2(50) NOT NULL,
-	question_context VARCHAR2(50) NOT NULL,
+	question_about VARCHAR2(50) DEFAULT 'n/a' NOT NULL,
+	question_context VARCHAR2(50) DEFAULT 'n/a' NOT NULL,
 	question_about_api VARCHAR2(50) NOT NULL,
 	question_context_api VARCHAR2(50) NOT NULL,
     	CONSTRAINT question_attributes_pk PRIMARY KEY (id),
