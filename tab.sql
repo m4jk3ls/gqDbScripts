@@ -15,8 +15,8 @@ CREATE TABLE question_content (
 CREATE TABLE question_attributes (
 	id NUMBER(10) NOT NULL,
     question_content_id NUMBER(10) NOT NULL,
-	question_about VARCHAR2(50) DEFAULT 'n/a' NOT NULL,
-	question_context VARCHAR2(50) DEFAULT 'n/a' NOT NULL,
+	question_attribute VARCHAR2(50) NOT NULL,
+	attribute_position NUMBER(2) NOT NULL,
 	question_about_api VARCHAR2(50) NOT NULL,
 	question_context_api VARCHAR2(50) NOT NULL,
     	CONSTRAINT question_attributes_pk PRIMARY KEY (id),
