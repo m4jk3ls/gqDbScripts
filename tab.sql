@@ -28,6 +28,7 @@ CREATE TABLE active_question (
 	token VARCHAR2(100) NOT NULL,
     question_id NUMBER(10) NOT NULL,
     answer VARCHAR2(1000) NOT NULL,
+    creation_date TIMESTAMP NOT NULL,
     	CONSTRAINT active_question_pk PRIMARY KEY (token),
         CONSTRAINT question_in_active_question_fk FOREIGN KEY (question_id) REFERENCES question_attributes(id) ON DELETE CASCADE
 );
