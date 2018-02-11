@@ -26,17 +26,17 @@ CREATE TABLE question_attributes (
 
 CREATE TABLE active_question (
 	token VARCHAR2(100) NOT NULL,
-    question_id NUMBER(10) NOT NULL,
+    question_attributes_id NUMBER(10) NOT NULL,
     answer VARCHAR2(1000) NOT NULL,
     creation_date TIMESTAMP NOT NULL,
     	CONSTRAINT active_question_pk PRIMARY KEY (token),
-        CONSTRAINT question_in_active_question_fk FOREIGN KEY (question_id) REFERENCES question_attributes(id) ON DELETE CASCADE
+        CONSTRAINT question_in_active_question_fk FOREIGN KEY (question_attributes_id) REFERENCES question_attributes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE archives (
-	question_id NUMBER(10) NOT NULL,
+	question_attributes_id NUMBER(10) NOT NULL,
     good_answers NUMBER(10) DEFAULT 0 NOT NULL,
     bad_answers NUMBER(10) DEFAULT 0 NOT NULL,
-    	CONSTRAINT question_in_archives_unique UNIQUE (question_id),
-    	CONSTRAINT question_in_archives_fk FOREIGN KEY (question_id) REFERENCES question_attributes(id) ON DELETE CASCADE
+    	CONSTRAINT question_in_archives_unique UNIQUE (question_attributes_id),
+    	CONSTRAINT question_in_archives_fk FOREIGN KEY (question_attributes_id) REFERENCES question_attributes(id) ON DELETE CASCADE
 );
