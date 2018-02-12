@@ -34,9 +34,11 @@ CREATE TABLE active_question (
 );
 
 CREATE TABLE archives (
+	id NUMBER(10) NOT NULL,
 	question_attributes_id NUMBER(10) NOT NULL,
     good_answers NUMBER(10) DEFAULT 0 NOT NULL,
     bad_answers NUMBER(10) DEFAULT 0 NOT NULL,
+		CONSTRAINT archives_pk PRIMARY KEY (id),
     	CONSTRAINT question_in_archives_unique UNIQUE (question_attributes_id),
     	CONSTRAINT question_in_archives_fk FOREIGN KEY (question_attributes_id) REFERENCES question_attributes(id) ON DELETE CASCADE
 );
